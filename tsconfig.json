@@ -1,5 +1,5 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", "app/components/lists/PlatformList.tsx", "app/routes/platformForm.tsx", "app/components/lists/UnitList1.jsx", "app/components/util/modal.jsx", "app/components/forms/NewUnit.tsx", "app/components/forms/AddDevice.tsx", "app/components/forms/AddSIM.tsx", "app/routes/providers.$providerId.$simId.edit.tsx", "app/routes/clients.$clientId.$unitId.edit.jsx", "app/routes/simForm.tsx", "app/components/lists/ManufacturerList.tsx", "app/components/forms/LinkSIM.tsx", "app/routes/manufacturers.$manufacturerId.$deviceId.jsx", "app/routes/manufacturers.$manufacturerId.$deviceId.edit.jsx", "app/routes/providers.$providerId.$simId.jsx", "app/routes/providers.$providerId.jsx", "app/routes/clients.$clientId.jsx", "app/routes/clients.$clientId.$unitId.jsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,

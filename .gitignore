@@ -1,6 +1,9 @@
 node_modules
+.ouput
+.cache
 
 /.cache
 /build
 /public/build
 .env
+prisma/dev.db

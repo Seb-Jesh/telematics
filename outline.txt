@@ -1,0 +1,6 @@
+// SIM CARDS
+Left panel: List of SIM providers
+Mid panel: List of SIMs from the currently active providers (MSISDN)
+Right panel: SIM details (ICCID.IMSI, MSISDN, Data plan, date activated etc.)
+
+Filter the select options to include only unlinked items

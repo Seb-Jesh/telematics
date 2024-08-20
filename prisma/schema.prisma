@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Platform {
+  id        Int      @id @default(autoincrement())
+  title     String 
+  url       String
+  units     Unit[]  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Manufacturer {
+  id        Int      @id @default(autoincrement())
+  maker     String 
+  url       String
+  devices   Device[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Provider {
+  id        Int      @id @default(autoincrement()) 
+  network   String 
+  url       String
+  apn       String
+  sims      Sim[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Sim {
+  id        String   @id @default(cuid())  
+  iccid     String   @default("Not available")
+  msisdn    String   @unique
+  plan      String   @default("Not available")
+  doa       String   @default("Not available")
+  status    Boolean  @default(false)
+  device    Device?  @relation(fields: [deviceId], references: [id])
+  deviceId  String?  @unique
+  provider  Provider @relation(fields: [providerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  providerId  Int    
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Device {
+  id          String   @id @default(cuid())
+  model       String 
+  sn          String? 
+  imei        String   @unique
+  sim         Sim?
+  unit        Unit?
+  manufacturer    Manufacturer   @relation(fields: [manufacturerId], references: [id])
+  manufacturerId  Int   
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id        Int      @id @default(autoincrement()) 
+  name      String 
+  contact   String
+  msisdn    String
+  address   String
+  units     Unit[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Unit {
+  id        Int      @id @default(autoincrement()) 
+  regMark   String 
+  brand     String
+  model     String?
+  yom       String
+  vin       String?
+  engine    String
+  client    Client   @relation(fields: [clientId], references: [id], onUpdate: Cascade)
+  clientId  Int      
+  device    Device   @relation(fields: [deviceImei], references: [imei])
+  deviceImei  String @unique
+  platform  Platform @relation(fields: [platformId], references: [id])
+  platformId  Int    
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

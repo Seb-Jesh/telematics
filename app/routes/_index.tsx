@@ -1,41 +1,27 @@
 import type { MetaFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
+import homeStyles from "~/styles/home.css"
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Abercorn App" },
+    { name: "description", content: "Abercorn Tracked Assets" },
   ];
 };
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: homeStyles },
+];
+
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <main id="content">
+      <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+        <h1>Keep track of Abercorn Assets</h1>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/social4good-uploads/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1701184986/fleet_management_banner_mlgnzm.jpg" />
+      </div>
+    </main>
   );
 }
